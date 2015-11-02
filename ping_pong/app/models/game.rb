@@ -14,4 +14,23 @@ class Game < ActiveRecord::Base
   has_many :teams, through: :team_games
   belongs_to :table
   accepts_nested_attributes_for :teams
+  
+  def team_one
+    self.team_games.first.team
+  end
+
+  def team_one_score
+    self.team_games.first.score
+  end
+
+  def team_two
+    self.team_games.last.team
+  end
+
+  def team_two_score
+    self.team_games.last.score
+  end
+
+
+
 end

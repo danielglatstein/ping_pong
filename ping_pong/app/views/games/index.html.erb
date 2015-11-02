@@ -1,0 +1,5 @@
+<% @games.each do |game| %>
+  <% game.teams.each do |team| %>
+    <%= team.name %>
+  <% end %>
+<% end %>

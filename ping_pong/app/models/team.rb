@@ -13,4 +13,13 @@ class Team < ActiveRecord::Base
   has_many :games, through: :team_games
   has_many :team_players
   has_many :players, through: :team_players
+
+  def score
+
+  end
+
+  def score=()
+
+  end
+  
 end
