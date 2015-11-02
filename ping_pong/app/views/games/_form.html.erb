@@ -1,0 +1,24 @@
+<%= form_for(@game) do |f|%>
+  WELCOME!
+  <br>
+  <%= f.label 'match_time' %> 
+  <%= f.datetime_select 'match_time' %> 
+
+  <br>
+  <%= f.label 'team 1' %> 
+  <br>
+    <%= f.fields_for :teams, Team.new do |player_fields| %>
+        Player 1  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
+        Player 2  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
+    <% end %>  
+  <br>
+  <%= f.label 'team 2' %> 
+  <br>
+    <%= f.fields_for :teams, Team.new do |player_fields| %>
+        Player 1  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
+        Player 2  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
+    <% end %>  
+  <br>
+  <%= f.submit %> 
+
+<% end %>  
