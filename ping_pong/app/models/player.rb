@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: players
 #
 #  id              :integer          not null, primary key
 #  name            :string
@@ -10,12 +10,12 @@
 #  updated_at      :datetime         not null
 #
 
-class User < ActiveRecord::Base
-  has_many :player1_teams, class_name: "Team", foreign_key: "player1_id"
-  has_many :player2_teams, class_name: "Team", foreign_key: "player2_id"
+class Player < ActiveRecord::Base
+  has_many :team_players
+  has_many :teams, through: :team_players
   validates_presence_of :name, :email
   validates_uniqueness_of :email
-  has_secure_password
+  # has_secure_password
 
   def teams
     select from teams.* all games where player_1_id == self.id

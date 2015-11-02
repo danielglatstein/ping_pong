@@ -1,10 +1,10 @@
 # == Schema Information
 #
-# Table name: games
+# Table name: team_players
 #
 #  id         :integer          not null, primary key
-#  match_time :datetime
-#  table_id   :integer
+#  player_id  :integer
+#  team_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -12,7 +12,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  a_id: 1
+  player_id: 1
+  team_id: 1
+  name: MyString
 
 two:
-  a_id: 1
+  player_id: 1
+  team_id: 1
+  name: MyString
