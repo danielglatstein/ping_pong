@@ -19,5 +19,4 @@ class Player < ActiveRecord::Base
 
   attr_accessor :remember_token
 
-
 end
