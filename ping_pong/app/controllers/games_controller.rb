@@ -9,7 +9,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    binding.pry
     date = Time.now
     game = Game.create(match_time: date)
     team1_player_ids = [params[:game][:team1][0][:player_ids].to_i, params[:game][:team1][1][:player_ids].to_i]

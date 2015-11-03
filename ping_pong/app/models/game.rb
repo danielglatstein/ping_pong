@@ -31,6 +31,20 @@ class Game < ActiveRecord::Base
     self.team_games.last.score
   end
 
+  def winning_team
+    if team_one_score > team_two_score
+      team_one
+    else
+      team_two
+    end
+  end
 
+  def losing_team
+    if team_one_score > team_two_score
+      team_two
+    else
+      team_one
+    end
+  end
 
 end

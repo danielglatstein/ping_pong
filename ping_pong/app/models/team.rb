@@ -12,44 +12,34 @@ require "pry"
 class Team < ActiveRecord::Base
   has_many :team_games
   has_many :games, through: :team_games
-  has_many :team_players
-  has_many :players, through: :team_players
+  # has_many :team_players
+  # has_many :players, through: :team_players
+  has_and_belongs_to_many :players
 
   def self.find_or_create_by_player_ids(player_id_array)
+
+    # Player.find(:player1_id).teams.select { |team| TeamPlayer.find_by(player_id: :player2_id, team_id: team.id }
     player1_id = player_id_array[0]
     player2_id = player_id_array[1]
-    team = TeamPlayer.select("team_players.*").where("team_players.player_id = 1 OR team_players.player_id = 2")
-    #iterate thru team and find the ones that have == team_players.team_id
+    player1 = Player.find_by(id: player1_id)
+    player2 = Player.find_by(id: player2_id)
 
-    # Team.find_or_create_by_player_ids([1, 2]) Yields this sql statement: 
-    #SELECT * FROM teams INNER JOIN team_players 
-    #ON team_players.team_id= teams.id 
-    #WHERE team_players.player_id = 1 as first, 
-    #team_players.player_id = 2 as second, 
-    #and first.team_id = second.team_id
-
-    player1_team_players = TeamPlayer.all.select do |team_player|
-      team_player.player_id == player1_id
-    end
-
-    player2_team_players = TeamPlayer.all.select do |team_player|
-      team_player.player_id == player2_id
-    end
-
-    results = player1_team_players.map do |player1_team_player|
-      player2_team_players.find do |player2_team_player|
-        player1_team_player.team_id == player2_team_player.team_id
-      end
-    end.compact.flatten
-    if results != []
-      new_team = results[0].team
-      new_team.save
-    else
+    if !!player2 && (player1.teams && player2.teams) != []
+      player1.teams && player2.teams
+    elsif player2_id != 0
       new_team = Team.create
       new_team.player_ids = player_id_array
-      new_team.save
+      new_team.tap(&:save)
+    elsif player1.teams.reject { |team| team.players.count != 1 } != []
+      player1.teams.reject do |team| 
+        team.players.count != 1
+      end[0]
+    else
+      new_team = Team.create
+      new_team.players << player1
+      new_team.tap(&:save)
     end
-      new_team
+
   end
 
 end

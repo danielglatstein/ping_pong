@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151102185752) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "games", force: :cascade do |t|
     t.datetime "match_time"
     t.integer  "table_id"
@@ -32,6 +29,13 @@ ActiveRecord::Schema.define(version: 20151102185752) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "players_teams", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tables", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -42,13 +46,6 @@ ActiveRecord::Schema.define(version: 20151102185752) do
     t.integer  "game_id"
     t.integer  "team_id"
     t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "team_players", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

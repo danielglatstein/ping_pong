@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
   end
 
   def show
+    set_player
   end
 
   def new
