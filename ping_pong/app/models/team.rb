@@ -45,6 +45,7 @@ class Team < ActiveRecord::Base
       new_team = results[0].team
       new_team.save
     else
+      player_id_array.delete(0)
       new_team = Team.create
       new_team.player_ids = player_id_array
       new_team.save
