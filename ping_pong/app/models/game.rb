@@ -32,6 +32,4 @@ class Game < ActiveRecord::Base
     self.team_games.last.score
   end
 
-
-
 end
