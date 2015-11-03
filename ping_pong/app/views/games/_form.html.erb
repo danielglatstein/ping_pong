@@ -11,8 +11,6 @@
     <%= f.fields_for 'team1[]', Team.new do |player_fields| %>
         Player 1  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
         Player 2  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name, include_blank: true%>
-    
-
         <%= player_fields.fields_for :team_games do |score_fields| %>
             Score  : <%= score_fields.number_field :score, in: 0..21 %>
         <% end %>  
@@ -23,15 +21,11 @@
     <%= f.fields_for 'team2[]', Team.new do |player_fields| %>
         Player 1  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name %>
         Player 2  : <%= player_fields.collection_select :player_ids, Player.all, :id, :name, include_blank: true %>
-    
-
         <%= player_fields.fields_for :team_games do |score_fields| %>
               Score  : <%= score_fields.number_field :score, in: 0..21 %>
         <% end %>  
-
-    <% end %> 
-  <br>
-  <br>
-  <%= f.submit %> 
-
+    <% end %>  
+    <br>
+    <br>
+    <%= f.submit %>  
 <% end %>  
