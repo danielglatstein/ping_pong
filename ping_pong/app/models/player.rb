@@ -17,6 +17,8 @@ class Player < ActiveRecord::Base
   validates_uniqueness_of :email
   has_secure_password
 
+  attr_accessor :remember_token
+
   def teams
     select from teams.* all games where player_1_id == self.id
     # all games for self = player1_games + player2_games 
@@ -41,4 +43,24 @@ class Player < ActiveRecord::Base
 
   def doubles_games
   end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+ def forget
+    update_attribute(:remember_digest, nil)
+ end
+
+
 end
