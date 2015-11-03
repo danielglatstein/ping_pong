@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   
   private 
 
-  def current_user
-    @current_player ||= User.find(session[:user_id]) if session[:user_id]
+  def current_player
+    @current_player ||= Player.find(session[:player_id]) if session[:player_id]
   end
+  
 end
