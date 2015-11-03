@@ -17,13 +17,13 @@ class GamesController < ApplicationController
     team2 = Team.find_or_create_by_player_ids(team2_player_ids)
     team_game_one = TeamGame.create(team_id: team1.id, game_id: game.id)
     team_game_two = TeamGame.create(team_id: team2.id, game_id: game.id)
-    team_game_one.update(score: params[:game][:team1][1][:score])
-    team_game_two.update(score: params[:game][:team2][1][:score])
+    team_game_one.update(score: params[:game][:team1][1][:team_games][:score])
+    team_game_two.update(score: params[:game][:team2][1][:team_games][:score])
     redirect_to games_path
   end
 
   def show
-    @game = Game.find
+    @game = Game.find(params[:id])
   end
 
   def edit
@@ -37,8 +37,12 @@ class GamesController < ApplicationController
 
   private
 
+  def set_game
+    @game = Game.find(params[:id])
+  end
+
   def game_params
-    params.require(:game).permit(:match_time, :table_id, :teams_attributes => [], :player_ids => [])
+    params.require(:game).permit(:match_time, :table_id, :teams_attributes => [], :team_games => [], :player_ids => [])
   end
 
 end

@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      session[:player_id] = @player.id
+      session[:player_id] = @player.id #we might need to change method here
       redirect_to players_path, :notice => "Ping Pong Rally On!"
     else
       render :new
