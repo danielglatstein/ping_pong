@@ -5,7 +5,6 @@ class PlayersController < ApplicationController
   end
 
   def show
-   
     @player = Player.find(params[:id])
   end
 
@@ -17,7 +16,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     if @player.save
       session[:player_id] = @player.id
-      redirect_to new_game_path, :notice => "Ping Pong Rally On!"
+      redirect_to players_path, :notice => "Ping Pong Rally On!"
     else
       render :new
     end
