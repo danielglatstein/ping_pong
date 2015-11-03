@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require "pry"
 
 class Team < ActiveRecord::Base
   has_many :team_games
@@ -27,14 +28,28 @@ class Team < ActiveRecord::Base
     #team_players.player_id = 2 as second, 
     #and first.team_id = second.team_id
 
-    if team
-      team
+    player1_team_players = TeamPlayer.all.select do |team_player|
+      team_player.player_id == player1_id
+    end
+
+    player2_team_players = TeamPlayer.all.select do |team_player|
+      team_player.player_id == player2_id
+    end
+
+    results = player1_team_players.map do |player1_team_player|
+      player2_team_players.find do |player2_team_player|
+        player1_team_player.team_id == player2_team_player.team_id
+      end
+    end.compact.flatten
+    if results != []
+      new_team = results[0].team
+      new_team.save
     else
       new_team = Team.create
       new_team.player_ids = player_id_array
       new_team.save
-      new_team
     end
+      new_team
   end
 
 end
