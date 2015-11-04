@@ -16,6 +16,12 @@ class Game < ActiveRecord::Base
   accepts_nested_attributes_for :teams
   accepts_nested_attributes_for :team_games
 
+  def opponent(team_id)
+    self.teams.select do |team|
+      team.id != team_id
+    end
+  end
+
   def team_one
     self.team_games.first.team
   end
@@ -31,6 +37,7 @@ class Game < ActiveRecord::Base
   def team_two_score
     self.team_games.last.score
   end
+
 
   def winning_team
     if team_one_score > team_two_score
