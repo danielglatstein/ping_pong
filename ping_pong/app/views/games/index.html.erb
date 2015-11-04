@@ -6,6 +6,7 @@
             </th>
             <tr>
                 <td>
+                <!-- line 10 breaks if a game gets saved without teams, need to add validations -->
                   <% if game.teams[0].players[1] != nil %>
                     <a href = players/<%= game.teams[0].players[0].id %>>
                     <%= game.teams[0].players[0].name%>

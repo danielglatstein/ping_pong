@@ -15,7 +15,7 @@ class Game < ActiveRecord::Base
   belongs_to :table
   accepts_nested_attributes_for :teams
   accepts_nested_attributes_for :team_games
-  
+
   def team_one
     self.team_games.first.team
   end
@@ -48,4 +48,7 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def start_time
+    created_at
+  end
 end

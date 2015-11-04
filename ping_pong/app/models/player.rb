@@ -63,7 +63,6 @@ class Player < ActiveRecord::Base
         singles_games_total + doubles_games_total
       end
 
-
       def self.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
