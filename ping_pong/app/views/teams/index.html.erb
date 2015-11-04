@@ -1,0 +1,7 @@
+<ul>
+  <% @teams.each do |team| %>
+    <li>
+      <%= link_to team.id, team_path(team)%> 
+    </li> 
+  <% end %> 
+</ul>

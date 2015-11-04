@@ -10,6 +10,7 @@
 #
 
 class Game < ActiveRecord::Base
+  extend SimpleCalendar
   has_many :team_games
   has_many :teams, through: :team_games
   belongs_to :table
@@ -51,4 +52,5 @@ class Game < ActiveRecord::Base
   def start_time
     match_time
   end
+
 end
