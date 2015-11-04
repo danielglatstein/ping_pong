@@ -18,7 +18,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "simple_calendar", "~> 2.0"
+
 gem 'pry'
+
+gem 'faker', '~> 1.5'
 
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 

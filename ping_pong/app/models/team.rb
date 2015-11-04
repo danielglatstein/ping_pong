@@ -24,8 +24,9 @@ class Team < ActiveRecord::Base
     player1 = Player.find_by(id: player1_id)
     player2 = Player.find_by(id: player2_id)
 
-    if !!player2 && (player1.teams && player2.teams) != []
-      player1.teams && player2.teams
+    if !!player2 && (player1.teams & player2.teams) != []
+      team_array = player1.teams & player2.teams
+      team_array[0]
     elsif player2_id != 0
       new_team = Team.create
       new_team.player_ids = player_id_array
