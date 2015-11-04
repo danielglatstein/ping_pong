@@ -8,6 +8,10 @@
 </head>
 <body>
 
+
+
+
+
 <div id="user_nav">
   <% if current_player %>
     Logged in as <%= current_player.name %>
@@ -22,6 +26,8 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>
 <br>
+
+
 
 <%= yield %>
 

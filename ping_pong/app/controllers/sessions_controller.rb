@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController 
 
+  skip_before_action :require_login, except: [:create, :destroy]
   helper_method :current_player
+
 
   def create
     player = Player.find_by_email(params[:email])

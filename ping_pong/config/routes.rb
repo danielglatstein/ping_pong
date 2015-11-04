@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'log_in'
   get '/logout', to: 'sessions#destroy', as: 'log_out'
 
-  root to: 'games#index'
+  root to: 'home#index'
 
 end
