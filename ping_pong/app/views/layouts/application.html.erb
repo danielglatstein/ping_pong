@@ -7,20 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class = "navbar navbar-default">
 
-
-
-
-
-<div id="user_nav">
-  <% if current_player %>
-    Logged in as <%= current_player.name %>
-    <%= link_to "Log Out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Log In", log_in_path %>
-  <% end %>
-  
+<%= render "layouts/navbar"%>
+</nav>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
