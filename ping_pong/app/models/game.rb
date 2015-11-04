@@ -49,6 +49,6 @@ class Game < ActiveRecord::Base
   end
 
   def start_time
-    created_at
+    match_time
   end
 end
