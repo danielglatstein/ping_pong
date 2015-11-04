@@ -5,8 +5,13 @@
 @import "bootstrap";
 
 
-body { padding-top: 60px;}
+body { 
+  padding-top: 60px;
+}
 
+#box {
+  padding-left: 60px;
+}
 
 @import "bootswatch/journal/bootswatch";
 
