@@ -43,4 +43,13 @@ class Team < ActiveRecord::Base
 
   end
 
+  def player_names
+    players = self.players
+    if players.count > 1
+      "#{players[0].name}/#{players[1].name}"
+    else
+      "#{players[0].name}"
+    end
+  end
+  
 end
