@@ -2,6 +2,6 @@
 <%@game.teams.each do |team|%>
   <h1><%=team.name%> <br>points: <%=@game.team_games.find_by_team_id(team.id).score%></h1>
         <%team.players.each do |player| %>
-        <h2><%=player.name%></h2>
+        <h2><%= link_to player.name, player_path(player)%></h2>
         <%end%>
 <%end%>        
