@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy, :new] 
   resources :teams
   resources :tables
+  resources :search, only: [:index]
 
   get '/signup', to: 'players#new'
   get '/login', to: 'sessions#new', as: 'log_in'

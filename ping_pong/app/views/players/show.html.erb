@@ -1,3 +1,4 @@
+<div id = "box">
 <h1><%= @player.name.capitalize %></h1>
 <h3>Games</h3>
 <% @player.teams.each do |team| %>
@@ -5,4 +6,5 @@
          <%= link_to game.match_time, game_path(game)%> <br>
   <% end %>
 <% end %>
+</div>
 
