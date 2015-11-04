@@ -22,6 +22,11 @@ class PlayersController < ApplicationController
     end
   end
 
+  def rankings
+    @top_ten_overall = Player.overall_top_ten
+  end
+
+
   private
     def set_player
       @player = Player.find(params[:id])
