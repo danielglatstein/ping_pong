@@ -25,6 +25,11 @@ skip_before_action :require_login, only: [:new, :create]
     end
   end
 
+  def rankings
+    @top_ten_overall = Player.overall_top_ten
+  end
+
+
   private
     def set_player
       @player = Player.find(params[:id])

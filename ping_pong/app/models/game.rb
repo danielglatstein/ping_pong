@@ -22,6 +22,15 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def find_team_game_by_player_id(id)
+    self.team_games.find do |team_game|
+      team = self.teams.find do |team|
+        team.players.include?(Player.find(id))
+      end
+      team_game.team_id == team.id
+    end
+  end
+
   def team_one
     self.team_games.first.team
   end
@@ -52,6 +61,22 @@ class Game < ActiveRecord::Base
       team_two
     else
       team_one
+    end
+  end
+
+  def winning_team_score
+    if team_one_score > team_two_score
+      team_one_score
+    else
+      team_two_score
+    end
+  end
+
+  def losing_team_score
+    if team_one_score > team_two_score
+      team_two_score
+    else
+      team_one_score
     end
   end
 
