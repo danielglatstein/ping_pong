@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   def opponent(team_id)
     self.teams.select do |team|
       team.id != team_id
-    end[0]
+    end
   end
 
   def find_team_game_by_player_id(id)
