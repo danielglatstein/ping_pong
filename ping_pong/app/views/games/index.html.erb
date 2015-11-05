@@ -3,7 +3,7 @@
       <% @games.each do |game| %>
         <p>
             <th colspan = "3">
-             <a href = games/<%= game.id %>> <%= game.match_time %></a>
+             <a href = games/<%= game.id %>> <%= game.match_time.strftime("%A, %B %C, %G - %l:%M%P") %></a>
             </th>
             <tr>
                 <td>

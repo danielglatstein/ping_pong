@@ -1,9 +1,9 @@
 <div id = "box">
-<h1><%= @player.name.capitalize %></h1>
+<h1><%= @player.name.split.map(&:capitalize).join(' ') %></h1>
 <h3>Games</h3>
 <% @player.teams.each do |team| %>
   <% team.games.each do |game| %> 
-         <%= link_to game.match_time, game_path(game)%> <br>
+         <%= link_to game.match_time.strftime("%A, %B %C, %G - %l:%M%P"), game_path(game)%> <br>
   <% end %>
 <% end %>
 </div>
