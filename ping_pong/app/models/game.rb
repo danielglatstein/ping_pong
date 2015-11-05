@@ -10,7 +10,7 @@
 #
 
 class Game < ActiveRecord::Base
-  has_many :team_games
+  has_many :team_games, dependent: :destroy
   has_many :teams, through: :team_games
   belongs_to :table
   accepts_nested_attributes_for :teams
@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   def opponent(team_id)
     self.teams.select do |team|
       team.id != team_id
-    end
+    end[0]
   end
 
   def find_team_game_by_player_id(id)
