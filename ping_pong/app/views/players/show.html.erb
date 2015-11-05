@@ -1,9 +1,19 @@
 <div id = "box">
 <h1><%= @player.name.split.map(&:capitalize).join(' ') %></h1>
-<h3>Games</h3>
+
+<br>
+<div>
+<h3 style="color:#747272">Total Wins: <span style="color:#29ce83"><%= @player.overall_wins %></span></h3>
+<h3 style="color:#747272">Total Losses:  <span style="color:#eb6864"><%= @player.overall_losses %> </span></h3>
+<h3>Overall Average: <%= @player.overall_win_average %></h3>
+<div>
+<br>
+
+
+<h3>Games Played</h3>
 <% @player.teams.each do |team| %>
   <% team.games.each do |game| %> 
-         <%= link_to game.match_time.strftime("%A, %B %C, %G - %l:%M%P"), game_path(game)%> <br>
+    <%= link_to game.match_time.strftime("%A, %B %C, %G - %l:%M%P"), game_path(game)%> <br>
   <% end %>
 <% end %>
 </div>
