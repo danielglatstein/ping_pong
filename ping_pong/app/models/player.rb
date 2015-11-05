@@ -109,15 +109,27 @@ class Player < ActiveRecord::Base
 
 
       def singles_win_average
-        singles_wins.count / singles_games_total
+        if singles_games_total != 0
+        (singles_wins.count * 1.0) / singles_games_total
+        else 
+          0
+        end
       end
 
       def doubles_win_average
-        doubles_wins.count / doubles_games_total
+        if doubles_games_total != 0
+          (doubles_wins.count * 1.0) / doubles_games_total
+        else
+          0
+        end
       end
 
       def overall_win_average
-        (overall_wins * 1.0) / games_total
+        if games_total != 0
+          (overall_wins * 1.0) / games_total
+        else
+          0
+        end
       end
 
 
