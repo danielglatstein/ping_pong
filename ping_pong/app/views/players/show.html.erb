@@ -1,27 +1,69 @@
 <div id = "box">
 <h1><%= @player.name.capitalize %></h1>
-<h2>Games</h2>
 
-<h3>Singles</h3>
-  <% @player.teams.each do |team| %>
-    <% team.games.each do |game| %> 
-      <% if game.opponent(team.id)[0].players.count == 1 %>
-        <% x = game.opponent(team.id)[0].players[0].name%><br>
-        vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> <%= link_to "view", game_path(game)%>
-      <% end %>
-    <% end %>
-  <% end %>
 
-<h3>Doubles</h3>
-  <% @player.teams.each do |team| %>
-    <% team.games.each do |game| %> 
-      <% if game.opponent(team.id)[0].players.count == 2 %>
-        <% x = game.opponent(team.id)[0].players[0].name%>
-        <% y = game.opponent(team.id)[0].players[1].name%>
-        <br>
-        vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> & <%=link_to y, player_path(game.opponent(team.id)[0].players[1].id)%> <%= link_to "view", game_path(game)%>
-      <% end %>
-    <% end %>
-  <% end %>
+  <h2>Games</h2>
+
+<table>
+  <tr>
+    <td valign ="top">
+      <table width = "350">
+        <tr>
+          <td colspan = "2">
+            <h3>Singles</h3>
+          </td>
+        </tr>
+        <% @player.teams.each do |team| %>
+          <% team.games.each do |game| %> 
+            <% if game.opponent(team.id)[0].players.count == 1 %>
+            <tr>
+              <td>
+                <% x = game.opponent(team.id)[0].players[0].name%><br>
+                vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> 
+                </td>
+                <td valign ="bottom">
+                <%= link_to "view", game_path(game)%>
+              </td>
+            </tr>     
+            <% end %>
+          <% end %>
+        <% end %>
+      </table>
+    </td>
+    <td valign = "top">
+      <table width = "350">
+        <tr>
+          <td colspan = "2">
+        <h3>Doubles</h3>
+        </td>
+        </tr>
+
+        <% @player.teams.each do |team| %>
+          <% team.games.each do |game| %> 
+            <% if game.opponent(team.id)[0].players.count == 2 %>
+            <tr><td>
+              <% x = game.opponent(team.id)[0].players[0].name%>
+              <% y = game.opponent(team.id)[0].players[1].name%>
+              <% z = team.players[0].name%>
+              <% q = team.players[1].name%>
+              <br>
+              
+              w/ <% if z != @player.name %>
+                <%= link_to z, player_path(team.players[0].id)%> 
+              <% else %>
+                <%= link_to q, player_path(team.players[1].id)%> 
+              <%end%>
+              vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> & <%=link_to y, player_path(game.opponent(team.id)[0].players[1].id)%>
+              </td>
+              <td valign ="bottom">
+               <%= link_to "view", game_path(game)%>
+               </td></tr>
+            <% end %>
+          <% end %>
+        <% end %> 
+      </table>
+    </td>
+  </tr>
+</table>
 </div>
 
