@@ -10,7 +10,7 @@
 #
 
 class Game < ActiveRecord::Base
-  has_many :team_games
+  has_many :team_games, dependent: :destroy
   has_many :teams, through: :team_games
   belongs_to :table
   accepts_nested_attributes_for :teams

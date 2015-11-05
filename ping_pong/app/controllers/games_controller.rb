@@ -41,12 +41,18 @@ class GamesController < ApplicationController
   end
 
   def edit
+    set_game
+    @team1 = @game.team_one
+    @team2 = @game.team_two
   end
 
   def update
   end
 
   def destroy
+    set_game
+    @game.destroy
+    redirect_to games_path
   end
 
   private
