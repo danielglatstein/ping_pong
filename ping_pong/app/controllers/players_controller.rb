@@ -1,10 +1,13 @@
 class PlayersController < ApplicationController
 
+skip_before_action :require_login, only: [:new, :create]
+
   def index
     @players = Player.all
   end
 
   def show
+    
     set_player
   end
 
@@ -21,6 +24,11 @@ class PlayersController < ApplicationController
       render :new
     end
   end
+
+  def rankings
+    @top_ten_overall = Player.overall_top_ten
+  end
+
 
   private
     def set_player
