@@ -1,10 +1,27 @@
 <div id = "box">
 <h1><%= @player.name.capitalize %></h1>
-<h3>Games</h3>
-<% @player.teams.each do |team| %>
-  <% team.games.each do |game| %> 
-         <%= link_to game.match_time, game_path(game)%> <br>
+<h2>Games</h2>
+
+<h3>Singles</h3>
+  <% @player.teams.each do |team| %>
+    <% team.games.each do |game| %> 
+      <% if game.opponent(team.id)[0].players.count == 1 %>
+        <% x = game.opponent(team.id)[0].players[0].name%><br>
+        vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> <%= link_to "view", game_path(game)%>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+
+<h3>Doubles</h3>
+  <% @player.teams.each do |team| %>
+    <% team.games.each do |game| %> 
+      <% if game.opponent(team.id)[0].players.count == 2 %>
+        <% x = game.opponent(team.id)[0].players[0].name%>
+        <% y = game.opponent(team.id)[0].players[1].name%>
+        <br>
+        vs. <%= link_to x, player_path(game.opponent(team.id)[0].players[0].id)%> & <%=link_to y, player_path(game.opponent(team.id)[0].players[1].id)%> <%= link_to "view", game_path(game)%>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 
