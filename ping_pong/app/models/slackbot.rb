@@ -17,9 +17,9 @@ class Slackbot
   end
 
   def generate(message)
-    params = {text: "wu tang"}  
+    params = {text: "#{message}"}  
     @params = {} 
-    @params[:payload] = {text: "wu tang"}.to_json 
+    @params[:payload] = {username: "PingPongBot", text: "#{message}"}.to_json 
     self
   end
 
