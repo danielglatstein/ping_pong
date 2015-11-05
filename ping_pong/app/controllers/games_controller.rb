@@ -21,6 +21,9 @@ class GamesController < ApplicationController
     team_game_two = TeamGame.create(team_id: team2.id, game_id: game.id)
     team_game_one.update(score: params[:game][:team1][1][:team_games][:score])
     team_game_two.update(score: params[:game][:team2][1][:team_games][:score])
+    slackbot = Slackbot.new
+    slackbot.generate("trying")
+    slackbot.deliver
     redirect_to games_path
   end
 

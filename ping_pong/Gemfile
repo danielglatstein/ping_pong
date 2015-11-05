@@ -21,6 +21,8 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'pry'
 
+gem 'slack-ruby-client'
+
 gem 'faker', '~> 1.5'
 
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
