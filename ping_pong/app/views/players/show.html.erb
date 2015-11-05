@@ -1,9 +1,36 @@
 <!-- A Hundred Years of View -->
 <div id = "box">
-<h1><%= @player.name.capitalize %></h1>
-  <h2>Games</h2>
 
 
+  
+
+
+<h1 style="margin-bottom:.5em; width:93%; border-bottom:solid"><%= @player.name.split.map(&:capitalize).join(' ') %></h1>
+
+
+<div>
+
+	<div style="width:33%;margin-bottom:3em;float:left">
+	<h4 style="color:#747272">Singles Wins: <span style="color:#29ce83"><%= @player.singles_wins.count %></span></h4>
+	<h4 style="color:#747272">Singles Losses:  <span style="color:#eb6864"><%= @player.singles_losses.count %> </span></h4>
+	<h4>Singles Average: <span style="color:#000000"><%= @player.singles_win_average.round(2) %></span></h4>
+	</div>
+
+	<div style="width:33%;margin-bottom:3em;float:left">
+	<h4 style="color:#747272">Doubles Wins: <span style="color:#29ce83"><%= @player.doubles_wins.count %></span></h4>
+	<h4 style="color:#747272">Doubles Losses:  <span style="color:#eb6864"><%= @player.doubles_losses.count %> </span></h4>
+	<h4>Doubles Average: <span style="color:#000000"><%= @player.doubles_win_average.round(2) %></span></h4>
+	</div>
+
+	<div style="width:33%;margin-bottom:3em;float:left">
+	<h4 style="color:#747272">Total Wins: <span style="color:#29ce83"><%= @player.overall_wins %></span></h4>
+	<h4 style="color:#747272">Total Losses:  <span style="color:#eb6864"><%= @player.overall_losses %> </span></h4>
+	<h4>Overall Average: <span style="color:#000000"><%= @player.overall_win_average.round(2) %></span></h4>
+	</div>
+
+</div>
+
+<h2>Games</h2>
 <div style = "padding-right:60px;">
   <div style="width:40%;float:left;padding-right:20px;">
   <h3> Singles </h3>
@@ -113,10 +140,13 @@
             <% end %>
           <% end %>
         <% end %> 
-  
+  <br><br>
   </div>
 
 </div>
+
+
+
 
 </div>
 

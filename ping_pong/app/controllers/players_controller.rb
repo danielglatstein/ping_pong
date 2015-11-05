@@ -7,7 +7,6 @@ skip_before_action :require_login, only: [:new, :create]
   end
 
   def show
-    
     set_player
   end
 

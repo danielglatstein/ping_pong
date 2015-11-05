@@ -1,8 +1,8 @@
 
 
 <% if current_player %>
-<p align="right" style="padding-right:15px">
-<i>Logged in as <%= current_player.name %></i>
+<p align="right" style="padding-right:20px">
+<i>logged in as <%= current_player.name %></i>
 </p>
 <% end %>
 
@@ -27,9 +27,9 @@
       </form>
 <!-- Sign out button -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/players/rankings">Rankings</a></li> 
+        <li><a href="/rankings">Rankings</a></li> 
         <li><a href="/players/<%="#{current_player.id}"%>">Home</a></li>
-        <li><a href="/logout">Signout</a></li>
+        <li><a href="/logout">Sign Out</a></li>
 
       </ul>
 
