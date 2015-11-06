@@ -1,3 +1,8 @@
+# app/assets/javascripts/application.js
+
+//= require imagesloaded
+//= require video
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
