@@ -1,37 +1,76 @@
-<div style="width:33%;margin-bottom:3em;float:left">
-<h2>Top Ten, Singles</h2>
-<ul>
-<% @top_ten_singles.each do |player|%>
-    <li>
-      <%= link_to player.name, player %>
-      <%= player.singles_win_average%>
-    </li>
-  <%end%>
-</ul>
-</div>
-
-<div style="width:33%;margin-bottom:3em;float:left">
-<h2>Top Ten, Doubles</h2>
-<ul>
-<% @top_ten_doubles.each do |player|%>
-    <li>
-      <%= link_to player.name, player %>
-      <%= player.doubles_win_average%>
-    </li>
-  <%end%>
-</ul>
-</div>
-
-
-<div style="width:33%;margin-bottom:3em;float:left">
 <h2>Top Ten, Overall</h2>
-<ul>
-<% @top_ten_overall.each do |player|%>
-    <li>
-      <%= link_to player.name, player %>
-      <%= player.overall_win_average%>
-    </li>
-  <%end%>
-</ul>
-</div>
+<table class="table table-striped table-hover ">
+ <thead>
+   <tr>
+     <th>#</th>
+     <th>Player Name</th>
+     <th>Win Percentage</th>
+     <th style="color:#29ce83">Points For</th>
+     <th style="color:#eb6864">Points Against</th>
+   </tr>
+ </thead>
+ <tbody>
+ <% style_array = ["info", "success", "danger", "warning", "active","info", "success", "danger", "warning", "active"] %>
+<% @top_ten_overall.each_with_index do |player, idx|%>
+   <tr class="<%= style_array[idx]%>">
+     <td><%= idx + 1 %></td>
+     <td><%= player.name %></td>
+     <td><%= player.overall_win_average%></td>
+     <td><%= player.doubles_points_scored + player.singles_points_scored%></td>
+     <td><%= player.doubles_points_against + player.singles_points_against%></td>
+   </tr>
+<%end%>
+ </tbody>
+</table>
 
+
+<h2>Top Ten Singles</h2>
+<table class="table table-striped table-hover ">
+ <thead>
+   <tr>
+     <th>#</th>
+     <th>Player Name</th>
+     <th>Win Percentage</th>
+     <th style="color:#29ce83">Points For</th>
+     <th style="color:#eb6864">Points Against</th>
+   </tr>
+ </thead>
+ <tbody>
+ <% style_array = ["info", "success", "danger", "warning", "active","info", "success", "danger", "warning", "active"] %>
+<% @top_ten_singles.each_with_index do |player, idx|%>
+   <tr class="<%= style_array[idx]%>">
+     <td><%= idx + 1 %></td>
+     <td><%= player.name %></td>
+     <td><%= player.overall_win_average%></td>
+     <td><%= player.singles_points_scored%></td>
+     <td><%= player.singles_points_against%></td>
+   </tr>
+<%end%>
+ </tbody>
+</table>
+
+
+<h2>Top Ten Doubles</h2>
+<table class="table table-striped table-hover ">
+ <thead>
+   <tr>
+     <th>#</th>
+     <th>Player Name</th>
+     <th>Win Percentage</th>
+     <th style="color:#29ce83">Points For</th>
+     <th style="color:#eb6864">Points Against</th>
+   </tr>
+ </thead>
+ <tbody>
+ <% style_array = ["info", "success", "danger", "warning", "active","info", "success", "danger", "warning", "active"] %>
+<% @top_ten_doubles.each_with_index do |player, idx|%>
+   <tr class="<%= style_array[idx]%>">
+     <td><%= idx + 1 %></td>
+     <td><%= player.name %></td>
+     <td><%= player.overall_win_average%></td>
+     <td><%= player.doubles_points_scored%></td>
+     <td><%= player.doubles_points_against%></td>
+   </tr>
+<%end%>
+ </tbody>
+</table>
