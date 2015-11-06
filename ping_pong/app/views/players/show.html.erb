@@ -54,20 +54,11 @@
 
 <div style="clear:both">
 <h2>Games</h2>
-<div style = "padding-right:60px;">
-  <div style="width:40%;float:left;padding-right:20px;">
+  
   <h3> Singles </h3>
-  </div>
-
-  <div style="width:60%;float:left;padding-right:20px;">
-  <h3>Doubles </h3>
-  </div>
-
-</div>
-
+  
 <div style = "padding-right:60px;">
-
-  <div style="width:20%;float:left;padding-right:20px;">
+  <div style="width:50%;float:left;padding-right:20px;">
     Wins<br>
     <% @player.teams.each do |team| %>
     <% team.games.each do |game| %> 
@@ -83,8 +74,7 @@
     <%end%>
   <%end%>
   </div>
-
-  <div style="width:20%;float:left;padding-right:20px;">
+  <div style="width:50%;float:left;padding-right:20px;">
     Losses<br>
     <% @player.teams.each do |team| %>
     <% team.games.each do |game| %> 
@@ -101,10 +91,12 @@
   <%end%>
   </div>
 </div>
-
-
-
-  <div style="width:30%;float:left;padding-right:10px;">
+<div style="clear:both">
+<div style = "padding-top:60px;">
+<h3>Doubles </h3>
+</div>
+<div style = "padding-right:60px;">
+<div style="width:50%;float:left;padding-right:20px;">
     Wins<br>
       <% @player.teams.each do |team| %>
           <% team.games.each do |game| %> 
@@ -134,8 +126,7 @@
           <% end %>
         <% end %> 
   </div>
-
-  <div style="width:30%;float:left;padding-right:10px;">
+  <div style="width:50%;float:left;padding-right:20px;">
     Losses<br>
     <% @player.teams.each do |team| %>
           <% team.games.each do |game| %> 
@@ -144,7 +135,7 @@
               <% y = game.opponent(team.id)[0].players[1].name%>
               <% z = team.players[0].name%>
               <% q = team.players[1].name%>     
-                  <% if game.winning_team.players[0].name != @player.name || game.winning_team.players[1].name != @player.name%>
+                  <% if game.winning_team.players[0].name != @player.name && game.winning_team.players[1].name != @player.name%>
                     <tr>
                       <td>
                         w/ <% if z != @player.name %>
@@ -167,9 +158,6 @@
   </div>
 
 </div>
-
-
-
 
 </div>
 
