@@ -95,6 +95,7 @@
     sample3 = (1..25).to_a
     sample4 = (26..50).to_a
 
+3.times do
   25.times do 
     Game.new.tap do |game|
 
@@ -154,6 +155,7 @@
         # game.team_games.each(&:save)
       end
     end
+  end
 
     TeamGame.all.each do |team_game|
       team_game.score = rand(1..21)

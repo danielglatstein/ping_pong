@@ -26,6 +26,8 @@ skip_before_action :require_login, only: [:new, :create]
   end
 
   def rankings
+    @top_ten_singles = Player.singles_top_ten
+    @top_ten_doubles = Player.doubles_top_ten
     @top_ten_overall = Player.overall_top_ten
   end
 

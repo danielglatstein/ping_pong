@@ -1,7 +1,37 @@
+<div style="width:33%;margin-bottom:3em;float:left">
+<h2>Top Ten, Singles</h2>
+<ul>
+<% @top_ten_singles.each do |player|%>
+    <li>
+      <%= link_to player.name, player %>
+      <%= player.singles_win_average%>
+    </li>
+  <%end%>
+</ul>
+</div>
+
+<div style="width:33%;margin-bottom:3em;float:left">
+<h2>Top Ten, Doubles</h2>
+<ul>
+<% @top_ten_doubles.each do |player|%>
+    <li>
+      <%= link_to player.name, player %>
+      <%= player.doubles_win_average%>
+    </li>
+  <%end%>
+</ul>
+</div>
+
+
+<div style="width:33%;margin-bottom:3em;float:left">
 <h2>Top Ten, Overall</h2>
+<ul>
 <% @top_ten_overall.each do |player|%>
-<p>
-<%= player.name %>
-<%= player.overall_win_average%>
-</p>
-<%end%>
+    <li>
+      <%= link_to player.name, player %>
+      <%= player.overall_win_average%>
+    </li>
+  <%end%>
+</ul>
+</div>
+

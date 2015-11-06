@@ -1,5 +1,5 @@
 <% @overall_top_ten.each do |player|%>
-<p><%= player.name %>
+<p><%= link_to player.name, player %>
 <%= player.overall_win_average%>
 </p>
 <%end%>
