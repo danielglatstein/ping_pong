@@ -15,12 +15,18 @@
     name: "Bottom of the Gowanus Canal"
   )
 
+  Course.create(name: "Web 0915")
+  Course.create(name: "Web 0715")
+  Course.create(name: "IOS 0915")
+
   100.times do  
+    id = rand(1..3)
     Player.create(
       name: Faker::Name.name, 
       email: Faker::Internet.email,
       password_digest: "password123",
-      remember_digest: "password123"
+      remember_digest: "password123",
+      course_id: id
     )
   end
 

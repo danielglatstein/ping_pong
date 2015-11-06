@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102185752) do
+ActiveRecord::Schema.define(version: 20151106140903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.datetime "match_time"
@@ -30,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151102185752) do
     t.string   "remember_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "course_id"
   end
 
   create_table "players_teams", force: :cascade do |t|

@@ -3,6 +3,7 @@ class SearchController < ApplicationController
   def index
 
    # keyword = params[:search][:keyword]
+   @courses = Course.all
    player = params[:keyword]
    @players = Search.for(player)
    if @players.size == 1

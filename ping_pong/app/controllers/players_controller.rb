@@ -4,6 +4,7 @@ skip_before_action :require_login, only: [:new, :create]
 
   def index
     @players = Player.all
+    @courses = Course.all
   end
 
   def show
@@ -35,6 +36,6 @@ skip_before_action :require_login, only: [:new, :create]
     end
 
     def player_params
-      params.require(:player).permit(:name, :email, :password, :password_confirmation)
+      params.require(:player).permit(:name, :email, :password, :course_id, :password_confirmation)
     end
 end

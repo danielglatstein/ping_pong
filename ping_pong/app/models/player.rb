@@ -13,6 +13,7 @@
 class Player < ActiveRecord::Base
   # has_many :team_players
   # has_many :teams, through: :team_players
+  belongs_to :course
   has_and_belongs_to_many :teams
   has_many :games, through: :teams
   validates_presence_of :name, :email
