@@ -12,7 +12,8 @@ class Slackbot
   # DANGER = 'danger'
 
   def initialize(channel = '#pingpongchannel')
-    @uri = URI.parse("https://hooks.slack.com/services/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")
+    keys = YAML.load_file('application.yml')
+    @uri = URI.parse(keys['SLACK_WEBHOOK_URL'])
     @channel = channel
   end
 
