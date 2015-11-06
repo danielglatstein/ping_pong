@@ -15,7 +15,7 @@
    <tr class="<%= style_array[idx]%>">
      <td><%= idx + 1 %></td>
      <td><%= player.name %></td>
-     <td><%= player.overall_win_average%></td>
+     <td><%= player.overall_win_average.round(3)%></td>
      <td><%= player.doubles_points_scored + player.singles_points_scored%></td>
      <td><%= player.doubles_points_against + player.singles_points_against%></td>
    </tr>
@@ -41,7 +41,7 @@
    <tr class="<%= style_array[idx]%>">
      <td><%= idx + 1 %></td>
      <td><%= player.name %></td>
-     <td><%= player.overall_win_average%></td>
+     <td><%= player.overall_win_average.round(3)%></td>
      <td><%= player.singles_points_scored%></td>
      <td><%= player.singles_points_against%></td>
    </tr>
@@ -67,7 +67,7 @@
    <tr class="<%= style_array[idx]%>">
      <td><%= idx + 1 %></td>
      <td><%= player.name %></td>
-     <td><%= player.overall_win_average%></td>
+     <td><%= player.overall_win_average.round(3)%></td>
      <td><%= player.doubles_points_scored%></td>
      <td><%= player.doubles_points_against%></td>
    </tr>
