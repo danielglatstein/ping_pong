@@ -6,7 +6,7 @@
 
 
 <h1 style="margin-bottom:.5em; width:93%; border-bottom:solid"><%= @player.name.split.map(&:capitalize).join(' ') %></h1>
-<%= @player.course.name %>
+<h3><%= @player.course.name %></h3>
 
 <div>
 
@@ -31,7 +31,7 @@
 	<h4>Overall Average: <span style="color:#000000"><%= @player.overall_win_average.round(2) %></span></h4>
 	</div>
 
-</div>
+
 
 <div>
   <div style="width:33%;margin-bottom:3em;float:left">
@@ -53,6 +53,7 @@
 
 
 <div style="clear:both">
+
 <h2>Games</h2>
   
   <h3> Singles </h3>
@@ -160,4 +161,4 @@
 </div>
 
 </div>
-
+</div>
